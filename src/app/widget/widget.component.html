@@ -1,10 +1,19 @@
+
 <div class="apps_container">
-  <div *ngFor="let appid of apps; let i = index" class="grupo_apps">
-     <a [routerLink]="['/widget', appid.app_id]">
-       <h2>{{appid.name}}</h2>
-       <div *ngIf="appid.app_id!='popular'" >
-          <img src="assets/img/{{appid.app_id}}-icon.svg" alt="{{appid.app_id}} - Pluga">
-        </div>
-    </a>
+  <h2>{{idapp}}</h2>
+  <div *ngFor="let appid of data; let i = index">
+    <div *ngIf="appid.app_id==idapp">
+      <div class="grupo_widget" *ngFor="let combo of appid.automationList; let i = index">
+          <a href="https://pluga.co/{{combo.url}}">
+          <h3>{{combo.description}}</h3>
+            <div class="grupo_apps">
+              <img src="assets/img/{{combo.source}}-icon.svg" alt="{{combo.source}} - Pluga">
+            </div>
+            <div class="grupo_apps">
+              <img src="assets/img/{{combo.target}}-icon.svg" alt="{{combo.target}} - Pluga">
+            </div>
+          </a>
+      </div>
+    </div>
   </div>
 </div>

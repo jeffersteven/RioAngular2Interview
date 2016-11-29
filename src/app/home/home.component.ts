@@ -36,8 +36,6 @@ export class HomeComponent implements OnInit{
       results[0].homeworld = results[1];
       this.apps = results[0];
     });
-    
-    console.log('Initial Apps Services', this.apps);
   }
 }
 

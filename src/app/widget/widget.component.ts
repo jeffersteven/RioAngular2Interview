@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   // The selector is what angular internally uses
@@ -14,7 +15,7 @@ import 'rxjs/add/operator/map';
   // Our list of styles in our component. We may add more to compose many styles together
   styleUrls: [ './widget.component.scss' ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
-  templateUrl: './widget.component.html',
+  templateUrl: './widget.component.html'
 
 })
 export class widgetComponent implements OnInit{
@@ -23,20 +24,30 @@ export class widgetComponent implements OnInit{
   apps: {};
   url_base_img="assets/img/";
   popularimg=this.url_base_img+"popular.png";
-  
+  idapp;
+  sub: any;
+  data;
   // TypeScript public modifiers
-  constructor(public appState: AppState, private http: Http) {
-
+  constructor(public appState: AppState, 
+    private http: Http, 
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => this.idapp = params['id']);
+
+
     var observable = this.http.get('https://demo4475807.mockable.io/templates_by_apps').map(res => res.json());
-    Observable.forkJoin([observable]).subscribe(results => {
-      results[0].homeworld = results[1];
+    Observable.forkJoin([observable]).subscribe(results => {      
       this.apps = results[0];
-    });
-    
-    console.log('Initial Apps Services', this.apps);
+      this.data=this.apps;
+      console.log(this.apps);
+      if(this.data.filter){
+        console.log(this.data);
+      }
+    });    
   }
+
 }
 

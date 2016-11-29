@@ -28,7 +28,6 @@ describe('Home', () => {
         deps: [MockBackend, BaseRequestOptions]
       },
       AppState,
-      Title,
       HomeComponent
     ]
   }));

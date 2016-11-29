@@ -3,7 +3,10 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 import { AppState } from './app.service';
-
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/operator/map';
 /*
  * App Component
  * Top Level Component
@@ -14,60 +17,25 @@ import { AppState } from './app.service';
   styleUrls: [
     './app.component.scss'
   ],
-  template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
-          Index
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
-          About
-        </a>
-      </span>
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
-    </footer>
-  `
+  templateUrl: 'app.component.html',
 })
 export class AppComponent {
   angularclassLogo = 'assets/img/pluga-logo-blue.svg';
   name = 'Angular 2 Webpack 2 Sass';
   url = '/';
-
-  constructor(public appState: AppState) {
-
-  }
+  apps: {};
+  constructor(
+    public appState: AppState,
+    private http: Http
+    ){}
 
   ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+    
+    var observable = this.http.get('https://demo4475807.mockable.io/templates_by_apps').map(res => res.json());
+    Observable.forkJoin([observable]).subscribe(results => {
+      results[0].homeworld = results[1];
+      this.apps = results[0];
+    });   
   }
 
 }

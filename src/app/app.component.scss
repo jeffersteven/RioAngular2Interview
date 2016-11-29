@@ -1,34 +1,71 @@
 // Declaración de variables para Sass
 $color_white: #FFFFFF;
 $secondary_color: #567654;
-$color_gray: #C0C0C0;
+$color_gray: rgba(230, 230, 230, 0.5);;
 $page_width: 965px;
-$color_black:#000000;
+$color_fondo:#8b6730;
 $padding_general:15px;
+$color_pagarme:#f37021;
+$color_iugu: #000000 ;
+$color_slack:#4f3450;
+$color_rd_station:#433828;
+$color_google_sheets:#0c7742;
+$color_mailchimp:#52bad5;
+$color_nfe_io:#20653d;
+$color_pag_seguro:#96c12e;
+$color_typeform:#343a40;
+$color_pipedrive:#222222;
+$color_moip:#4f3058;
+$color_stripe:#249bd6;
+$color_paypal:#0e3178;
+$color_mercado_pago:#009ee3;
+$color_nibo:#303235;
+$color_mandrill:#171717;
+$color_rd_station:#433828;
+$color_boleto_simples:#1167ad;
+$color_plugcrm:#00c3f1;
+$color_lahar:#053c50;
+$color_totalvoice:#52658c;
+
 
 body{
     width: 100%;
     background: $color_white;
-    color: $color_gray;
+    color: $color_fondo;
     margin: 5px 5px 10px 20px;
     // Recuerde el alcance de un Selector en Sass
-    h2{
+    h3{
       color: $color_white;
     }
+    a{
+        text-decoration: none;
+    }
    .grupo_apps{
-      width: 20%;
+      width: 15%;
       text-align: center;
       padding: $padding_general;
       display: inline-block;
+      margin:1%;
+      vertical-align: middle;
+      border-radius: 85px;
      img{
         width:70px;
      }
+      &:hover{
+        background:rgba(14,167,255,0.75);
+        
+      }
     }
     .apps_container{
       max-width:$page_width;
       margin:0 auto;
-      background-color:$color_black;
+      background-color:$color_gray;
       text-align:center;
+      border-radius:8px;
+      -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+      padding: 50px 10px;
     }
     .logo{
       width: 100%;
@@ -38,5 +75,81 @@ body{
         margin: 0 auto;
       }
     }
+    .grupo_widget{
+
+    }
+    
+}
+.automation-app.iugu{
+  background-color: $color_iugu;
 }
 
+.automation-app.pagar_me{
+  background-color: $color_pagarme;
+}
+
+.automation-app.slack{
+   background-color: $color_slack;
+}
+
+.automation-app.rd_station{
+  background-color: $color_rd_station;
+}
+
+.automation-app.google_sheets{
+  background-color: $color_google_sheets;
+}
+
+.automation-app.mailchimp{
+  background-color: $color_mailchimp;
+}
+
+.automation-app.nfe_io{
+  background-color: $color_nfe_io;
+}
+
+.automation-app.pag_seguro{
+  background-color: $color_pag_seguro;
+}
+.automation-app.typeform{
+  background-color: $color_typeform;
+}
+.automation-app.pipedrive{
+  background-color: $color_pipedrive;
+}
+.automation-app.moip{
+  background-color: $color_moip;
+}
+.automation-app.stripe{
+  background-color: $color_stripe;
+}
+.automation-app.paypal{
+  background-color: $color_paypal;
+}
+.automation-app.mercado_pago{
+  background-color: $color_mercado_pago;
+}
+.automation-app.nibo{
+  background-color: $color_nibo;
+}
+.automation-app.mandrill{
+  background-color: $color_mandrill;
+}
+.automation-app.rd_station{
+  background-color: $color_rd_station;
+}
+.automation-app.boleto_simples{
+  background-color: $color_boleto_simples;
+}
+.automation-app.plugcrm{
+  background-color: $color_plugcrm;
+}
+.automation-app.lahar{
+  background-color: $color_lahar;
+}
+.automation-app.totalvoice{
+  background-color: $color_totalvoice;
+}
+.automation-app.popular{
+  background-color: $color_fondo;
+}
