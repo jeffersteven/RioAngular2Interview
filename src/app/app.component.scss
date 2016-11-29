@@ -1,0 +1,42 @@
+// Declaración de variables para Sass
+$color_white: #FFFFFF;
+$secondary_color: #567654;
+$color_gray: #C0C0C0;
+$page_width: 965px;
+$color_black:#000000;
+$padding_general:15px;
+
+body{
+    width: 100%;
+    background: $color_white;
+    color: $color_gray;
+    margin: 5px 5px 10px 20px;
+    // Recuerde el alcance de un Selector en Sass
+    h2{
+      color: $color_white;
+    }
+   .grupo_apps{
+      width: 20%;
+      text-align: center;
+      padding: $padding_general;
+      display: inline-block;
+     img{
+        width:70px;
+     }
+    }
+    .apps_container{
+      max-width:$page_width;
+      margin:0 auto;
+      background-color:$color_black;
+      text-align:center;
+    }
+    .logo{
+      width: 100%;
+      text-align: center;
+      img{
+        width: 200px;
+        margin: 0 auto;
+      }
+    }
+}
+

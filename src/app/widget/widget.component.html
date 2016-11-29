@@ -1,0 +1,10 @@
+<div class="apps_container">
+  <div *ngFor="let appid of apps; let i = index" class="grupo_apps">
+     <a [routerLink]="['/widget', appid.app_id]">
+       <h2>{{appid.name}}</h2>
+       <div *ngIf="appid.app_id!='popular'" >
+          <img src="assets/img/{{appid.app_id}}-icon.svg" alt="{{appid.app_id}} - Pluga">
+        </div>
+    </a>
+  </div>
+</div>
