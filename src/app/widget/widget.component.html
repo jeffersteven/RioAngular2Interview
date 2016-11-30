@@ -1,18 +1,24 @@
 
 <div class="apps_container">
-  <h2>{{idapp}}</h2>
   <div *ngFor="let appid of data; let i = index">
     <div *ngIf="appid.app_id==idapp">
       <div class="grupo_widget" *ngFor="let combo of appid.automationList; let i = index">
-          <a href="https://pluga.co/{{combo.url}}">
-          <h3>{{combo.description}}</h3>
-            <div class="grupo_apps">
+            
+            <div class="grupo_apps automation-app {{combo.source}} col4">
               <img src="assets/img/{{combo.source}}-icon.svg" alt="{{combo.source}} - Pluga">
             </div>
-            <div class="grupo_apps">
+            <div class="botonauto {{combo.source}} col4">
+              <a href="https://pluga.co/{{combo.url}}">AUTOMATIZAR</a>
+            </div>
+            <div class="grupo_apps automation-app {{combo.target}} col4">
               <img src="assets/img/{{combo.target}}-icon.svg" alt="{{combo.target}} - Pluga">
             </div>
-          </a>
+            <div class="textoapp col4">
+              <p>
+              {{combo.description}}
+              </p>
+            </div>
+          
       </div>
     </div>
   </div>
