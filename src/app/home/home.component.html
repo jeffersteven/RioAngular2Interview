@@ -1,5 +1,8 @@
 <div class="apps_container">
-  <div *ngFor="let appid of apps; let i = index" class="grupo_apps automation-app {{appid.app_id}} ">
+  <div class="inputs">
+    <input (ngModelChange)="filtro($event)" [(ngModel)]="idbuscar" class="filtroinput" placeholder="FILTER">
+  </div>
+  <div *ngFor="let appid of (apps); let i = index" class="grupo_apps automation-app {{appid.app_id}} ">
      <a [routerLink]="['/widget', appid.app_id]">
        <h3>{{appid.name}}</h3>
        <div *ngIf="appid.app_id!='popular'" >

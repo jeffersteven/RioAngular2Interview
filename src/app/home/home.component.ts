@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,NgModule} from '@angular/core';
 import { AppState } from '../app.service';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
+
 
 @Component({
   // The selector is what angular internally uses
@@ -16,12 +17,15 @@ import 'rxjs/add/operator/map';
   styleUrls: [ './home.component.scss' ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   templateUrl: './home.component.html',
-
+  
 })
+
+
 export class HomeComponent implements OnInit{
   // Set our default values
   localState = { value: '' };
-  apps: {};
+  apps;
+  data;
   url_base_img="assets/img/";
   popularimg=this.url_base_img+"popular.png";
   
@@ -33,9 +37,15 @@ export class HomeComponent implements OnInit{
   ngOnInit() {
     var observable = this.http.get('https://demo4475807.mockable.io/templates_by_apps').map(res => res.json());
     Observable.forkJoin([observable]).subscribe(results => {
-      results[0].homeworld = results[1];
       this.apps = results[0];
+      this.data = this.apps;
     });
+  }
+
+  filtro(idapp){
+    this.apps = this.data.filter(function (obj) {
+      return JSON.stringify(obj.name).toLowerCase().includes(idapp.toLowerCase())
+    });    
   }
 }
 

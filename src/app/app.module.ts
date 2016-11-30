@@ -17,7 +17,7 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { widgetComponent } from './widget';
 import { NoContentComponent } from './no-content';
-
+import { PipesModule } from './pipes';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -33,15 +33,18 @@ type StoreType = {
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
+
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
+    
     AppComponent,
     widgetComponent,
     HomeComponent,
-    NoContentComponent
+    NoContentComponent,
   ],
   imports: [ // import Angular's modules
+    PipesModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -50,7 +53,7 @@ type StoreType = {
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS
-  ]
+  ],
 })
 export class AppModule {
   constructor(public appRef: ApplicationRef, public appState: AppState) {}

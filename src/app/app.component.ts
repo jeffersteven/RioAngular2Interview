@@ -22,7 +22,7 @@ import 'rxjs/add/operator/map';
 export class AppComponent {
   angularclassLogo = 'assets/img/pluga-logo-blue.svg';
   name = 'Angular 2 Webpack 2 Sass';
-  url = '/';
+  url = '';
   apps: {};
   constructor(
     public appState: AppState,

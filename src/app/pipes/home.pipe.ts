@@ -1,9 +1,9 @@
-import {Injectable, Pipe, PipeTransform} from '@angular/core';
+import {Pipe, PipeTransform, NgModule } from '@angular/core';
 
 @Pipe({
-    name: 'myfilter'
+    name: 'myfilter',
+    pure: false
 })
-@Injectable()
 export class FilterArrayPipe implements PipeTransform{
     transform(items: any[], args: any[]): any {
         return items.filter(item => item.id.indexOf(args[0]) !== -1);
